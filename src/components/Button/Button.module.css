@@ -1,0 +1,31 @@
+.ButtonComponent{
+    padding: 1em 2.5em;
+    border-radius: 35px;
+    border: none;
+
+    font-size: 14px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    transition: var(--primary-transition);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75em;
+}
+.ButtonComponent:hover{
+    background: var(--primary-color-hover);
+}
+
+
+/*custom style buttons*/
+.ButtonComponent.small{
+    font-size: 14px;
+    padding: 1em 2.5em;
+}
+.ButtonComponent.big{
+    font-size: 16px;
+    padding: 1.5em 3.5em;
+    text-transform: uppercase;
+}

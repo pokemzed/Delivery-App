@@ -1,0 +1,16 @@
+.InputComponent{
+    border-radius: 10px;
+    border: 1px solid #EEEEEE;
+    background: #FFFFFF;
+    padding: 1.5em 1em;
+    box-shadow: 15px 20px 45px 0 rgba(233, 233, 233, 0.25);
+
+    color: var(--text-color);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.InputComponent::placeholder{
+    color: #C4C4C4;
+}

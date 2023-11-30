@@ -1,11 +1,12 @@
 import {ButtonProps} from "./Button.props.ts";
 import {FC} from "react";
-import './Button.css'
+import style from './Button.module.css'
 
 
-const Button: FC<ButtonProps> = ({children, className, ...props}) => {
+const Button: FC<ButtonProps> = ({children, appearance = 'small', className, ...props}) => {
     return (
-        <button {...props} className={`ButtonComponent ${className}`}>
+        <button {...props}
+                className={`${style.ButtonComponent} ${appearance === 'small' ? style.small : style.big} ${className}`}>
             {children}
         </button>
     )
