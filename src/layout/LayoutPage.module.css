@@ -70,3 +70,8 @@
 .buttonLogout{
     margin-top: auto;
 }
+
+.content{
+    padding: 2em 3em;
+    width: 70%;
+}

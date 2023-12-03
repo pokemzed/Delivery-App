@@ -1,0 +1,24 @@
+.inputContainer{
+    position: relative;
+}
+.inputContainer img{
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+.Search{
+    border-radius: 10px;
+    border: 1px solid #EFEFEF;
+    background: #FCFCFD;
+    padding: 1em 3em;
+    min-width: 250px;
+
+    color: var(--text-color);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.Search::placeholder{
+    color: #9AA0B4;
+}

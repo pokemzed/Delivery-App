@@ -3,7 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {FC, ReactNode} from "react";
 import Button from "../components/Button/Button.tsx";
 
-const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, className}) => {
+const LayoutPage: FC<{ children: ReactNode, className: string}> = ({children, className}) => {
     const {pathname} = useLocation()
     return (
         <div className={styles.LayoutPage}>
@@ -49,7 +49,7 @@ const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, c
                     Выход
                 </Button>
             </div>
-            <main className={className}>
+            <main className={`${styles.content} ${className}`}>
                 {children}
             </main>
         </div>

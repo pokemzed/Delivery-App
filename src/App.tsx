@@ -1,4 +1,4 @@
-import {routes} from "./routes.tsx";
+import {routes} from "./shared/routes.tsx";
 import {Route, Routes} from "react-router-dom";
 
 function App() {
