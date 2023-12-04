@@ -1,5 +1,5 @@
 import {FC} from "react";
-import LayoutPage from "../../layout/LayoutPage.tsx";
+import LayoutPage from "../../layout/Layout/LayoutPage.tsx";
 import styles from './Menu.module.css'
 import HeaderMenu from "../../components/HeaderMenu/HeaderMenu.tsx";
 import {ProductsMenu} from "../../components/ProductsMenu/ProductsMenu.tsx";

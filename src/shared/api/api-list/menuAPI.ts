@@ -6,9 +6,10 @@ export const menuAPI = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'https://purpleschool.ru/pizza-api-demo'}),
     endpoints: (build) => ({
         allProductsMenu: build.query<IProduct[], string>({
-            query: () => ({
-                url: '/products',
-            })
+            query: () => '/products'
+        }),
+        getProductMenu: build.query<IProduct, string>({
+            query: (idProduct) => `/products/${idProduct}`
         })
     })
 })

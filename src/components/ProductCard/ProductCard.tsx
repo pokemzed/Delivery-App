@@ -7,7 +7,7 @@ export const ProductCard: FC<IProduct> = ({image, id, rating, price, name, ingre
     return (
         <Link to={`/menu/${id}`} className={styles.ProductCard}>
             <div className={styles.imageCard}>
-                <img src={image} alt={`image-${name.toLowerCase()}`}/>
+                <img src={image} alt={`image-${name}`}/>
                 <div className={styles.price}>
                     <p>
                         {price.toLocaleString()} <span>₽</span>
@@ -27,7 +27,7 @@ export const ProductCard: FC<IProduct> = ({image, id, rating, price, name, ingre
             </div>
             <div className={styles.infoCard}>
                 <h3>{name}</h3>
-                <p>{ingredients}</p>
+                <p>{ingredients.join(', ')}</p>
             </div>
         </Link>
     )

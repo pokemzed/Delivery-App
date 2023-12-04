@@ -1,5 +1,5 @@
 import {FC} from "react";
-import LayoutPage from "../../layout/LayoutPage.tsx";
+import LayoutPage from "../../layout/Layout/LayoutPage.tsx";
 import styles from "../Menu/Menu.module.css";
 
 const Cart: FC = () => {

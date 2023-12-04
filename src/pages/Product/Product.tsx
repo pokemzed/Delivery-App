@@ -1,28 +1,23 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import styles from './Product.module.css'
-import LayoutPage from "../../layout/LayoutPage.tsx";
-import {IProduct} from "../Menu/Menu.tsx";
+import LayoutPage from "../../layout/Layout/LayoutPage.tsx";
 import {ProductCard} from "../../components/ProductCard/ProductCard.tsx";
 import {useParams} from "react-router-dom";
+import {useGetProductMenuQuery} from "../../shared/api";
 
 const Product: FC = () => {
     const {id} = useParams()
-    const [product, setProduct] = React.useState<IProduct | null>(null)
-
-    React.useEffect(() => {
-        fetch(`https://purpleschool.ru/pizza-api-demo/products/${id}`)
-            .then(res => res.json())
-            .then(data => setProduct(data))
-    }, [])
+    const {data: product, isLoading} = useGetProductMenuQuery(id!)
 
     return (
         <LayoutPage className={styles.Product}>
             Product page
+            {isLoading && <span>Loading products...</span>}
             {product && <ProductCard
                 id={product.id}
                 image={product.image}
-                title={product.name}
-                description={product.ingredients.join(', ')}
+                name={product.name}
+                ingredients={product.ingredients}
                 price={product.price}
                 rating={product.rating}
             />}

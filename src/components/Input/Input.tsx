@@ -6,7 +6,7 @@ const Input: FC<InputProps> = ({className, isValid = true, ...props}) => {
     return (
         <input
             {...props}
-            className={`${style.InputComponent} ${className} ${!isValid && style.rejectValidation}`}
+            className={`${style.InputComponent} ${className} ${isValid && style.rejectValidation}`}
         />
     )
 }

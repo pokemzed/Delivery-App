@@ -1,10 +1,25 @@
 import styles from './LayoutPage.module.css'
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FC, ReactNode} from "react";
-import Button from "../components/Button/Button.tsx";
+import Button from "../../components/Button/Button.tsx";
+import {useAppDispatch} from "../../hooks/useAppSelector.ts";
+import {logoutUser} from "../../shared/store/slices/authSlice.ts";
 
 const LayoutPage: FC<{ children: ReactNode, className: string}> = ({children, className}) => {
+    const navigate = useNavigate()
+
+    //Проверка наличия токена
+    const token = localStorage.getItem('token')
+    if(!token){
+        navigate('auth/login')
+    }
+
+    const dispatch = useAppDispatch()
     const {pathname} = useLocation()
+    const handleLogoutUser = () => {
+        dispatch(logoutUser())
+        navigate('auth/login')
+    }
     return (
         <div className={styles.LayoutPage}>
             <div className={styles.menu}>
@@ -44,7 +59,7 @@ const LayoutPage: FC<{ children: ReactNode, className: string}> = ({children, cl
                         Корзина
                     </Link>
                 </nav>
-                <Button className={styles.buttonLogout}>
+                <Button onClick={handleLogoutUser} className={styles.buttonLogout}>
                     <img src="/icons/logout.svg" alt="logout-icon"/>
                     Выход
                 </Button>
