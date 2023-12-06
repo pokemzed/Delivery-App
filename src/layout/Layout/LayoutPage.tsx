@@ -2,15 +2,14 @@ import styles from './LayoutPage.module.css'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FC, ReactNode} from "react";
 import Button from "../../components/Button/Button.tsx";
-import {useAppDispatch} from "../../hooks/useAppSelector.ts";
+import {useAppDispatch, useAppSelector} from "../../hooks/useAppSelector.ts";
 import {logoutUser} from "../../shared/store/slices/authSlice.ts";
 
-const LayoutPage: FC<{ children: ReactNode, className: string}> = ({children, className}) => {
+const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, className}) => {
+    // check auth
+    const {token} = useAppSelector(state => state.auth)
     const navigate = useNavigate()
-
-    //Проверка наличия токена
-    const token = localStorage.getItem('token')
-    if(!token){
+    if (!token) {
         navigate('auth/login')
     }
 

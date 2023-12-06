@@ -8,29 +8,28 @@ import {useAuthLoginMutation} from "../../shared/api";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch} from "../../hooks/useAppSelector.ts";
 import {loginUser} from "../../shared/store/slices/authSlice.ts";
+import {isErrorWithMessage} from "../../shared/types/helpersErrors.ts";
 
 export const LoginForm: FC = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const [login, {data, isSuccess}] = useAuthLoginMutation()
+    const [login, {data, isSuccess, error}] = useAuthLoginMutation()
     const submitForm = async (values: { email: string, password: string }) => {
-        try{
+        try {
             await login(values).unwrap()
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
     }
 
     //UseEffect login
     React.useEffect(() => {
-        if(isSuccess && data){
-            const jwt = data.access_token
-            const payloadToken = jwt.split('.')[1]
-            const {email, id} = JSON.parse(window.atob(payloadToken))
-            dispatch(loginUser({id, token: jwt, email}))
+        if (isSuccess && data) {
+            const token = data.access_token
+            dispatch(loginUser({token}))
             navigate('/')
         }
-    }, [data, isSuccess, navigate])
+    }, [data, dispatch, isSuccess, navigate])
 
     return (
         <Formik
@@ -49,6 +48,7 @@ export const LoginForm: FC = () => {
                  }) => {
                     return (
                         <form onSubmit={handleSubmit} className={styles.formContainer}>
+                            {isErrorWithMessage(error) && <span>{error.data.message}</span>}
                             <div className={styles.inputContainer}>
                                 <label htmlFor="email">E-Mail</label>
                                 <Input

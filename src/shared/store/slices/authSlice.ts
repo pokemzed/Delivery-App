@@ -1,15 +1,14 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {loadState} from "../hooks-store.ts";
+
+export const TOKEN_PERSISTENT_STATE = 'userData'
 
 interface IState {
-    id: number | null
     token: string | null
-    email: string | null
 }
 
 const initialState: IState = {
-    id: null,
-    token: null,
-    email: null
+    token: loadState<IState>(TOKEN_PERSISTENT_STATE)?.token ?? null
 }
 
 export const authSlice = createSlice({
@@ -17,19 +16,10 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         loginUser: (state, action: PayloadAction<IState>) => {
-            state.id = action.payload.id
-            state.email = action.payload.email
-            if (action.payload.token) {
-                const userToken = action.payload.token
-                state.token = userToken
-                localStorage.setItem('token', userToken)
-            }
+            state.token = action.payload.token
         },
         logoutUser: (state) => {
-            state.id = null
-            state.email = null
             state.token = null
-            localStorage.removeItem('token')
         }
     }
 })
