@@ -4,11 +4,11 @@ import {loadState} from "../hooks-store.ts";
 export const TOKEN_PERSISTENT_STATE = 'userData'
 
 interface IState {
-    token: string | null
+    token: string | null,
 }
 
 const initialState: IState = {
-    token: loadState<IState>(TOKEN_PERSISTENT_STATE)?.token ?? null
+    token: loadState<IState>(TOKEN_PERSISTENT_STATE)?.token ?? null,
 }
 
 export const authSlice = createSlice({

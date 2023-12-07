@@ -1,34 +1,22 @@
 import styles from './LayoutPage.module.css'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FC, ReactNode} from "react";
-import Button from "../../components/Button/Button.tsx";
-import {useAppDispatch, useAppSelector} from "../../hooks/useAppSelector.ts";
-import {logoutUser} from "../../shared/store/slices/authSlice.ts";
+import {useAppSelector} from "../../hooks/useAppSelector.ts";
+import {LogoutUser} from "../../components/LogoutUser/LogoutUser.tsx";
+import {InfoUser} from "../../components/InfoUser/InfoUser.tsx";
 
 const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, className}) => {
-    // check auth
-    const {token} = useAppSelector(state => state.auth)
     const navigate = useNavigate()
-    if (!token) {
-        navigate('auth/login')
-    }
-
-    const dispatch = useAppDispatch()
     const {pathname} = useLocation()
-    const handleLogoutUser = () => {
-        dispatch(logoutUser())
+    //CheckAuth
+    const {token} = useAppSelector(state => state.auth)
+    if(!token){
         navigate('auth/login')
     }
     return (
         <div className={styles.LayoutPage}>
             <div className={styles.menu}>
-                <div className={styles.profileInfo}>
-                    <img src="/icons/Intersect.png" alt="icon-profile"/>
-                    <div className={styles.text}>
-                        <h3>Михаил Воробушков</h3>
-                        <span>mvorobushkov@gmail.com</span>
-                    </div>
-                </div>
+                <InfoUser/>
                 <nav className={styles.navigation}>
                     <Link
                         className={`${pathname === '/' ? styles.navigateActive : ''}`}
@@ -58,10 +46,7 @@ const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, c
                         Корзина
                     </Link>
                 </nav>
-                <Button onClick={handleLogoutUser} className={styles.buttonLogout}>
-                    <img src="/icons/logout.svg" alt="logout-icon"/>
-                    Выход
-                </Button>
+                <LogoutUser/>
             </div>
             <main className={`${styles.content} ${className}`}>
                 {children}

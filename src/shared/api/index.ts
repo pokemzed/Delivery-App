@@ -3,9 +3,10 @@ import {authAPI} from "./api-list/authAPI.ts";
 
 export const {
     useAllProductsMenuQuery,
-    useGetProductMenuQuery
+    useGetProductMenuQuery,
 } = menuAPI
 
 export const {
-    useAuthLoginMutation
+    useAuthLoginMutation,
+    useGetUserQuery
 } = authAPI

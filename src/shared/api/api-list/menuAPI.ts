@@ -10,6 +10,9 @@ export const menuAPI = createApi({
         }),
         getProductMenu: build.query<IProduct, string>({
             query: (idProduct) => `/products/${idProduct}`
+        }),
+        getUser: build.query({
+            query: () => '/user/profile'
         })
     })
 })
