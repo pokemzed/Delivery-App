@@ -8,5 +8,6 @@ export const {
 
 export const {
     useAuthLoginMutation,
-    useGetUserQuery
+    useGetUserQuery,
+    useAuthRegMutation
 } = authAPI

@@ -12,3 +12,8 @@ export interface ILoginUser {
     email: string
     password: string
 }
+export interface IRegUser {
+    name: string,
+    email: string
+    password: string
+}

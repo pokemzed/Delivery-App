@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {ILoginUser, IUser} from "../../types/user.ts";
+import {ILoginUser, IRegUser, IUser} from "../../types/user.ts";
 
 export const authAPI = createApi({
     reducerPath: 'authAPI',
@@ -7,6 +7,13 @@ export const authAPI = createApi({
     //Ставим тег юзера
     tagTypes: ["User"],
     endpoints: build => ({
+        authReg: build.mutation<{access_token: string}, IRegUser>({
+            query: (body) => ({
+                url: '/auth/register',
+                method: 'POST',
+                body
+            })
+        }),
         authLogin: build.mutation<{ access_token: string }, ILoginUser>({
             query: (body) => ({
                 url: '/auth/login',

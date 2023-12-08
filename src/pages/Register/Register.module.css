@@ -1,0 +1,39 @@
+.container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.container h1{
+    margin: 0;
+    color: var(--text-color);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 43.695px */
+}
+
+
+.reg{
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+.reg span{
+    color: #5B5B5E;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.reg a{
+    text-decoration: none;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
