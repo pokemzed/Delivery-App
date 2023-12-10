@@ -38,6 +38,7 @@ export const RegForm: FC = () => {
                      handleChange,
                      handleSubmit,
                  }) => {
+                    // console.log(!!errors.email, touched.email, error)
                     return (
                         <form onSubmit={handleSubmit} className={styles.formContainer}>
                             {isErrorWithMessage(error) && <span>{error.data.message}</span>}
@@ -50,8 +51,7 @@ export const RegForm: FC = () => {
                                     value={values.name}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    isValid={!!errors.name && !!touched.name}
-
+                                    isValid={!!errors.name && !!touched.name || !!error}
                                 />
                             </div>
                             <div className={styles.inputContainer}>
@@ -63,7 +63,7 @@ export const RegForm: FC = () => {
                                     value={values.email}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    isValid={!!errors.email && !!touched.email}
+                                    isValid={!!errors.email && !!touched.email || !!error}
 
                                 />
                             </div>
@@ -76,7 +76,7 @@ export const RegForm: FC = () => {
                                     value={values.password}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    isValid={!!errors.password && !!touched.password}
+                                    isValid={!!errors.password && !!touched.password || !!error}
 
                                 />
                             </div>
