@@ -6,11 +6,13 @@ import {LogoutUser} from "../../components/LogoutUser/LogoutUser.tsx";
 import {InfoUser} from "../../components/InfoUser/InfoUser.tsx";
 
 const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, className}) => {
+    const {items} = useAppSelector(state => state.cart)
+    console.log(items)
     const navigate = useNavigate()
     const {pathname} = useLocation()
     //CheckAuth
     const {token} = useAppSelector(state => state.auth)
-    if(!token){
+    if (!token) {
         navigate('auth/login')
     }
     return (
@@ -43,7 +45,7 @@ const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, c
                             <circle cx="10.5" cy="12.5" r="1.5" fill="#9796A1"/>
                             <circle cx="15.5" cy="12.5" r="1.5" fill="#9796A1"/>
                         </svg>
-                        Корзина
+                        Корзина ({items.reduce((cal, item) => cal + item.count, 0)})
                     </Link>
                 </nav>
                 <LogoutUser/>

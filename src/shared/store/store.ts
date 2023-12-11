@@ -4,11 +4,13 @@ import authReducer, {TOKEN_PERSISTENT_STATE} from './slices/authSlice.ts'
 import {menuAPI} from "../api/api-list/menuAPI.ts";
 import {authAPI} from "../api/api-list/authAPI.ts";
 import {saveState} from "./hooks-store.ts";
+import cartReducer from './slices/cartSlice.ts'
 
 
 const reducers = combineReducers({
     counter: counterSlice,
     auth: authReducer,
+    cart: cartReducer,
     [menuAPI.reducerPath]: menuAPI.reducer,
     [authAPI.reducerPath]: authAPI.reducer
 })
