@@ -1,0 +1,18 @@
+.SuccessPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+.SuccessPage img{
+    width: 350px;
+}
+.SuccessPage h2{
+    color: var(--text-color);
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%; /* 37.2px */
+}

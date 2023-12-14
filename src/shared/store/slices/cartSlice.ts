@@ -3,7 +3,7 @@ import {loadState} from "../hooks-store.ts";
 
 export const CART_PERSISTENT_STATE = 'cartData'
 
-interface IProductCart {
+export interface IProductCart {
     id: number
     count: number
 }
@@ -51,9 +51,12 @@ export const cartSlice = createSlice({
         },
         removeItem: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter(i => i.id !== action.payload)
+        },
+        clearCart: (state) => {
+            state.items = []
         }
     }
 })
 
-export const {addCart, decreaseItem, removeItem} = cartSlice.actions
+export const {addCart, decreaseItem, removeItem, clearCart} = cartSlice.actions
 export default cartSlice.reducer

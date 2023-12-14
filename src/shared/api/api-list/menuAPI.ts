@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IProduct} from "../../types/product.ts";
+import {IProduct, IResponseOrder} from "../../types/product.ts";
+import {IProductCart} from "../../store/slices/cartSlice.ts";
 
 export const menuAPI = createApi({
     reducerPath: 'menuAPI',
@@ -16,5 +17,13 @@ export const menuAPI = createApi({
         getProductMenu: build.query<IProduct, string>({
             query: (idProduct) => `/products/${idProduct}`
         }),
+        createOrder: build.mutation<IResponseOrder, {products: IProductCart[], jwt: string}>({
+            query: (products) => ({
+                url: '/order',
+                method: "POST",
+                headers: {Authorization: `Bearer ${products.jwt ? products.jwt : ''}`},
+                body: products.products
+            })
+        })
     })
 })

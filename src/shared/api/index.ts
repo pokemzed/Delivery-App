@@ -5,6 +5,7 @@ export const {
     useAllProductsMenuQuery,
     useGetProductMenuQuery,
     useLazyGetProductMenuQuery,
+    useCreateOrderMutation
 } = menuAPI
 
 export const {
