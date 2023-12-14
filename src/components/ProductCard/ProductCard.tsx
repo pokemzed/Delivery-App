@@ -1,7 +1,7 @@
 import {FC, MouseEvent} from "react";
 import styles from './ProductCard.module.css'
 import {Link} from "react-router-dom";
-import {IProduct} from "../../shared/types/product.tsx";
+import {IProduct} from "../../shared/types/product.ts";
 import {useAppDispatch} from "../../hooks/useAppSelector.ts";
 import {addCart} from "../../shared/store/slices/cartSlice.ts";
 

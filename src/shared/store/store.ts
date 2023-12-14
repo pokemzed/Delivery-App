@@ -4,7 +4,7 @@ import authReducer, {TOKEN_PERSISTENT_STATE} from './slices/authSlice.ts'
 import {menuAPI} from "../api/api-list/menuAPI.ts";
 import {authAPI} from "../api/api-list/authAPI.ts";
 import {saveState} from "./hooks-store.ts";
-import cartReducer from './slices/cartSlice.ts'
+import cartReducer, {CART_PERSISTENT_STATE} from './slices/cartSlice.ts'
 
 
 const reducers = combineReducers({
@@ -22,6 +22,7 @@ export const store = configureStore({
 
 store.subscribe(() => {
     saveState({token: store.getState().auth.token}, TOKEN_PERSISTENT_STATE)
+    saveState(store.getState().cart, CART_PERSISTENT_STATE)
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {ProductCard} from "../ProductCard/ProductCard.tsx";
-import {IProduct} from "../../shared/types/product.tsx";
+import {IProduct} from "../../shared/types/product.ts";
 
 export const ProductsMenu: FC<{ products: IProduct[] }> = ({products}) => {
     return (

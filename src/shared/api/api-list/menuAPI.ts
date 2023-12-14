@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IProduct} from "../../types/product.tsx";
+import {IProduct} from "../../types/product.ts";
 
 export const menuAPI = createApi({
     reducerPath: 'menuAPI',

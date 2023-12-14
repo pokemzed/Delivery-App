@@ -1,15 +1,18 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {loadState} from "../hooks-store.ts";
 
-export interface IProductCart {
+export const CART_PERSISTENT_STATE = 'cartData'
+
+interface IProductCart {
     id: number
     count: number
 }
 
-export interface IStateCart {
+interface IStateCart {
     items: IProductCart[]
 }
 
-const initialState: IStateCart = {
+const initialState: IStateCart = loadState(CART_PERSISTENT_STATE) ?? {
     items: []
 }
 
@@ -29,9 +32,28 @@ export const cartSlice = createSlice({
                 }
                 return 1
             })
+        },
+        decreaseItem: (state, action: PayloadAction<number>) => {
+            const existed = state.items.find(i => i.id === action.payload)
+            if (!existed) {
+                return
+            }
+            if (existed.count === 1) {
+                state.items = state.items.filter(i => i.id !== action.payload)
+                return
+            }
+            state.items.map(item => {
+                if (item.id === action.payload) {
+                    item.count -= 1
+                }
+                return item
+            })
+        },
+        removeItem: (state, action: PayloadAction<number>) => {
+            state.items = state.items.filter(i => i.id !== action.payload)
         }
     }
 })
 
-export const {addCart} = cartSlice.actions
+export const {addCart, decreaseItem, removeItem} = cartSlice.actions
 export default cartSlice.reducer

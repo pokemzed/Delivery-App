@@ -7,7 +7,6 @@ import {InfoUser} from "../../components/InfoUser/InfoUser.tsx";
 
 const LayoutPage: FC<{ children: ReactNode, className: string }> = ({children, className}) => {
     const {items} = useAppSelector(state => state.cart)
-    console.log(items)
     const navigate = useNavigate()
     const {pathname} = useLocation()
     //CheckAuth
